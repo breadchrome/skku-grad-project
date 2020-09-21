@@ -1,4 +1,4 @@
-addpath(genpath('./functions'))
+addpath(genpath('~/csi/project/src/convert/functions'))
 
 csi_trace = read_bf_file(argv(){1});
 % eliminate empty cell
@@ -12,8 +12,15 @@ fprintf('Have CSI for %d packets\n', length(csi_trace))
 csi = zeros(length(csi_trace),1,30);
 timestamp = zeros(1,length(csi_trace));
 temp = [];
+
 for packet_index = 1:length(csi_trace)
-    csi(packet_index,:,:) = get_scaled_csi(csi_trace{packet_index});
+    scaled_csi = get_scaled_csi(csi_trace{packet_index})
+    if size(scaled_csi)(1,2) == 1
+        last_successful = scaled_csi
+    else
+        scaled_csi = last_successful
+    end
+    csi(packet_index,:,:) = scaled_csi
     timestamp(packet_index) = csi_trace{packet_index}.timestamp_low * 1.0e-6;
 end
 timestamp = timestamp';

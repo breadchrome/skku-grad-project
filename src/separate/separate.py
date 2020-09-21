@@ -1,6 +1,7 @@
 #/usr/bin/python3
 
 import sys
+import os
 from math import sin, cos, pi
 
 with open(sys.argv[1]) as csi_file:
@@ -22,9 +23,11 @@ for subcarriers in subcarriers_rows:
         for subcarrier, (amplitude, phase,) in enumerate(zip(amplitudes, phases)):
             out[antenna][subcarrier].append((amplitude, phase,))
 
+os.mkdir(f"{csv_path}.scs")
+
 for n_antenna, antenna in enumerate(out):
     for n_subcarrier, subcarrier in enumerate(antenna):
-        with open(f"{csv_path}.a{n_antenna}.s{n_subcarrier}.csv", "w") as outfile:
+        with open(f"{csv_path}.scs/a{n_antenna}.s{n_subcarrier}.csv", "w") as outfile:
             for timestamp, (amp, phs,) in zip(timestamps, subcarrier):
                 phs /= 2 * pi
                 outfile.write(f"{timestamp},{amp * cos(phs)},{amp * sin(phs)}\n")
