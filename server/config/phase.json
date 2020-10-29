@@ -1,0 +1,19 @@
+{
+    "name": "with phase",
+    "model": {
+        "tags": 5,
+        "window_length": 1000,
+        "input_size": 60,
+        "units_lstm": 200,
+        "learning_rate": 1e-5
+    },
+    "dirs": {
+        "dataset": "data/with_phase",
+        "model": "classifier/saved_model/with_phase"
+    },
+    "tags": ["none", "still", "crouch", "flipped", "rolling"],
+    "preprocessing": {
+        "window_size": 1000,
+        "slide_delta": 100
+    }
+}

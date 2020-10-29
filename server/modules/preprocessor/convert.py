@@ -7,9 +7,14 @@ import glob
 import config
 
 if __name__ == "__main__":
+    """
+    Converts binary csi data into NumPy matrices.
 
-    dir = sys.argv[1]
-    mode = sys.argv[2]
+    If phase is enabled, each row has 60 columns (30 subcarriers) * (amplitude, phase)
+    If not, each row has 30 columns.
+    """
+
+    _, dir, mode = sys.argv
 
     input = None
     for filename in glob.glob(f'{dir}/*_{mode}.dat'):

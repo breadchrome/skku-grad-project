@@ -1,0 +1,27 @@
+{
+    "name": "without phase",
+    "model": {
+        "tags": 5,
+        "window_length": 1000,
+        "input_size": 30,
+        "units_lstm": 200,
+        "learning_rate": 1e-5
+    },
+    "dirs": {
+        "dataset": "data/csi/nophase",
+        "model": "data/model/nophase/v1"
+    },
+    "tags": ["none", "still", "crouch", "flipped", "rolling"],
+    "preprocessing": {
+        "window_size": 1000,
+        "slide_delta": 100
+    },
+    "training": {
+        "batch_size": 64,
+        "epochs": 10
+    },
+    "prod": {
+        "model": "model_1.h5",
+        "tick": 5000
+    }
+}
