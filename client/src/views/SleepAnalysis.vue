@@ -108,7 +108,6 @@ export default {
         fill: {
           type: 'solid',
         },
-        colors: ['#ddd', '#000', '#aaa'],
         tooltip: {
           enabled: false,
         },
@@ -127,11 +126,12 @@ export default {
   },
   async created() {
     const { data } = await this.$http.get(
-      'http://localhost:8181/sleeping-analysis',
+      'http://localhost:8088/sleeping-analysis',
       {
         params: {
           user: 'test',
           date: dayjs().format('YYYY-MM-DD'),
+          max_timeline_len: 100,
         },
       }
     );
