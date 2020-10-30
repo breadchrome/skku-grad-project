@@ -41,7 +41,7 @@ def sleeping_analysis():
     user = request.args.get('user', default='test')
     date = request.args.get('date')
 
-    timeline_ndarray = predictor.load_and_predict("data/csi/nophase/virtual_sleep.npy")
+    timeline_ndarray = predictor.load_and_predict("data/sleep/20201029.npy")
     timeline_len = len(timeline_ndarray)
 
     stride = timeline_len // max_timeline_len

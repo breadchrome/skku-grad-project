@@ -8,7 +8,7 @@ import pickle
 from typing import Tuple, Iterable
 
 
-def generate_dataset(data_path: str, window_size: int, slide_delta: int, tags: Iterable[str], prefix: str = None, ) -> Tuple[np.ndarray, np.ndarray]:
+def generate_dataset(data_path: str, window_size: int, slide_delta: int, tags: Iterable[str], prefix: str = None) -> Tuple[np.ndarray, np.ndarray]:
     """Load `*.npy` files and convert them to a format that can be feeded to the model.
 
     `*.npy` files are the results of `convert.py`.
@@ -97,7 +97,7 @@ def save_dataset(data_path: str, dataset: Tuple[np.ndarray, np.ndarray], portion
     """
     values, labels = dataset
     values_train, labels_train, values_test, labels_test =\
-        split_data(values, labels, portion)
+        split_data(values, labels, portion=portion)
 
     with open(f'{data_path}/dataset.train.pkl', 'wb') as train_f, open(f'{data_path}/dataset.test.pkl', 'wb') as test_f:
         pickle.dump((values_train, labels_train), train_f)
