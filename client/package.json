@@ -12,7 +12,7 @@
     "@ionic/vue": "^5.4.0",
     "@ionic/vue-router": "^5.4.0",
     "apexcharts": "^3.22.0",
-    "axios": "^0.21.0",
+    "axios": "^1.6.0",
     "core-js": "^3.6.5",
     "dayjs": "^1.9.4",
     "lodash": "^4.17.20",
